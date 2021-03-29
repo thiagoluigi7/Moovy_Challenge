@@ -1,0 +1,34 @@
+# compiled output
+/moovy-backend/dist
+/moovy-backend/node_modules
+
+# Logs
+/moovy-backend/logs
+/moovy-backend/*.log
+/moovy-backend/npm-debug.log*
+/moovy-backend/yarn-debug.log*
+/moovy-backend/yarn-error.log*
+/moovy-backend/lerna-debug.log*
+
+# OS
+/moovy-backend/.DS_Store
+
+# Tests
+/moovy-backend/coverage
+/moovy-backend/.nyc_output
+
+# IDEs and editors
+/moovy-backend/.idea
+/moovy-backend/.project
+/moovy-backend/.classpath
+/moovy-backend/.c9/
+/moovy-backend/*.launch
+/moovy-backend/.settings/
+/moovy-backend/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
