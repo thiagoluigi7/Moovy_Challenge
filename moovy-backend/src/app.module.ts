@@ -5,12 +5,14 @@ import { UserModule } from './user/user.module';
 
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb+srv://admin:niPPiIUshlYwRhJw@moovy-db.ckd0c.mongodb.net/profiles?retryWrites=true&w=majority'),
     UserModule,
-    AuthModule],
+    AuthModule,
+    ReviewModule],
   controllers: [AppController],
   providers: [AppService],
 })
