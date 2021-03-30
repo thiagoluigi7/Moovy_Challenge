@@ -10,6 +10,9 @@
 /moovy-backend/yarn-error.log*
 /moovy-backend/lerna-debug.log*
 
+# Uploaded Itens
+/moovy-backend/uploads/*
+
 # OS
 /moovy-backend/.DS_Store
 
