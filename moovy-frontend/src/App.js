@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React, { useState } from 'react';
 
-import Dashboard from './components/Dashboard/Dashboard';
+import Dashboard from './components/Dashboard/Dashboard.tsx';
 import Login from './components/Login/Login';
 import CreateUser from './components/CreateUser/CreateUser';
 
