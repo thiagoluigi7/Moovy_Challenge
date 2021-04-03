@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './CreateUser.css';
-
-const USER_API = "https://localhost:3000/user";
+import USER_API from './../../App';
 
 async function createUser(credentials) {
 

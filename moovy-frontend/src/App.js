@@ -8,10 +8,17 @@ import Login from './components/Login/Login';
 import CreateUser from './components/CreateUser/CreateUser';
 
 import useToken from './components/App/useToken';
+import useUser from './components/App/useUser';
+
+const USER_API = "https://localhost:3000/user";
+const MOVIE_API ="https://localhost:3000/movies";
+const REVIEW_API ="https://localhost:3000/review";
+const IMDB_API = "http://www.omdbapi.com/?apikey=39c17bb5&";
 
 function App() {
 
   const { token, setToken } = useToken();
+  const { user, setUser } = useUser();
 
   if(!token) {
     return (
@@ -29,7 +36,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route>
-            <Dashboard />
+            <Dashboard setUser={setUser} />
           </Route>
         </Switch>
       </BrowserRouter>
