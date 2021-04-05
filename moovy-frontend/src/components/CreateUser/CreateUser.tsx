@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './CreateUser.css';
-import USER_API from './../../App';
+import USER_API from '../App/App';
 
-async function createUser(credentials) {
+async function createUser(credentials: { email: string; password: string; name: string; }) {
 
+    // @ts-ignore
     return fetch(USER_API, {
         method: 'POST',
         headers: {
@@ -22,11 +23,20 @@ export default function CreateUser() {
     const [createdAlert, setCreatedAlert] = useState(false);
     const [notCreatedAlert, setNotCreatedAlert] = useState(false);
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
+        // @ts-ignore
+        const email: string;
+        // @ts-ignore
+        const password: string;
+        // @ts-ignore
+        const name: string;
         const user = await createUser({
+            // @ts-ignore
             email,
+            // @ts-ignore
             password,
+            // @ts-ignore
             name
         })
         if(user) {
@@ -44,14 +54,17 @@ export default function CreateUser() {
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>email</p>
+                    {/* @ts-ignore */}
                     <input type="email" onChange={e => setEmail(e.target.value)}/>
                 </label>
                 <label>
                     <p>password</p>
+                    {/* @ts-ignore */}
                     <input type="password" onChange={e => setPassword(e.target.value)} />
                 </label>
                 <label>
                     <p>name</p>
+                    {/* @ts-ignore */}
                     <input type="text" onChange={e => setName(e.target.value)} />
                 </label>
                 <div>

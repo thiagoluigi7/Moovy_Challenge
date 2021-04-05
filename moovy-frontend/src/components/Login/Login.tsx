@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import USER_LOGIN_API from '../App/App';
+import jsonWebTokenService from 'jsonwebtoken';
+
+import { Button, Input } from '@material-ui/core';
+
 import './Login.css';
 
-const USER_LOGIN_API = "localhost:3000/auth/login";
+async function loginUser(credentials: { email: string; password: string; }) {
 
-async function loginUser(credentials) {
-
+    // @ts-ignore
     return fetch(USER_LOGIN_API, {
         method: 'POST',
         headers: {
@@ -17,23 +21,31 @@ async function loginUser(credentials) {
 
 }
 
+// @ts-ignore
 export default function Login({ setToken }) {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [alert, setAlert] = useState(false);
 
-    const handleLoginSubmit = async e => {
+    const handleLoginSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         const token = await loginUser({
-            email,
-            password
+            // @ts-ignore
+            email, password
         });
         if (token.statusCode == 401) {
             //console.log(token);
             setAlert(true);
         } else {
             setToken(token);
+            // @ts-ignore
+            var user = jsonWebTokenService.decode(token).subject;
+            if (user != null) {
+            sessionStorage.setItem('user', user);
             //console.log(token);
+            } else {
+                console.log('User null');
+            }
         }
 
     }
@@ -45,14 +57,16 @@ export default function Login({ setToken }) {
             <form onSubmit={handleLoginSubmit}>
                 <label>
                     <p>email</p>
-                    <input type="email" onChange={e => setEmail(e.target.value)}/>
+                    {/* @ts-ignore */}
+                    <Input type="email" onChange={e => setEmail(e.target.value)}/>
                 </label>
                 <label>
                     <p>password</p>
-                    <input type="password" onChange={e => setPassword(e.target.value)} />
+                    {/* @ts-ignore */}
+                    <Input type="password" onChange={e => setPassword(e.target.value)} />
                 </label>
                 <div>
-                    <button type="submit">submit</button>
+                    <Button type="submit">submit</Button>
                 </div>
                 <div>
                     {alert && <h3> Login failed! </h3>}
