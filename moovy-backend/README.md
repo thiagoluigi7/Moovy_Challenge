@@ -49,8 +49,13 @@ There are 4 endpoints: <br><br>
 ## This project is deployed on heroku
 
 ## [Moovy](https://moovy-frontend.herokuapp.com/)
+<br>
 
-<br> <br>
+## Technical decisions
+
+1. Every request needs an ``access_token``. This token is generated using the JWT standard at login time and is stored in the sessionStorage.
+2. The JWT token will expire after 1800s.
+3. The request made to create an user doesn't need this JWT token.
 
 ## Installation
 
