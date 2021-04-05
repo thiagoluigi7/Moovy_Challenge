@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ResultCard } from './ResultCard';
 
 // import IMDB_API from './App/App';
-const IMDB_API = "http://www.omdbapi.com/?apikey=39c17bb5&";
+const IMDB_API = "https://www.omdbapi.com/?apikey=39c17bb5&";
 
 export const Add = () => {
     const [query, setQuery] = useState('');

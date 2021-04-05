@@ -10,7 +10,7 @@ import './Login.css';
 
 const USER_LOGIN_API = "https://moovy-backend.herokuapp.com/auth/login";
 const MOVIE_API ="https://moovy-backend.herokuapp.com/movies";
-const IMDB_API = "http://www.omdbapi.com/?apikey=39c17bb5&";
+const IMDB_API = "https://www.omdbapi.com/?apikey=39c17bb5&";
 
 function fetchMovie(id) {
     fetch(`${IMDB_API}i=${id}`, {
