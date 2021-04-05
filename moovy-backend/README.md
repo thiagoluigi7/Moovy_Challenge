@@ -1,35 +1,56 @@
-# This project is deployed on heroku
+# Repo
 
-[Moovy](https://moovy-frontend.herokuapp.com/)
+In this folder will be the code responsible for the backend of the Moovy application. This backend server is made using the [NestJS Framework](https://nestjs.com/).
 
+## Endpoints
 
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+There are 4 endpoints: <br><br>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+- home (``/``)
+ - - This is used to test the deploy of the server. Just print "Hello World".
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- user (``/user``)
+ This one is used to control user related features. 
+ - - If made a GET request returns all users and their information.
+ - - If made a GET request appending /id to this endpoint it returns every information of that user. (Ex ``localhost:3000/user/3``)
+ - - If made a POST request with a body containing email, password and name will create an user. Example of body:
+      ``` JSON
+          { 
+            "email":"teste@email.com",
+            "password":"123",
+            "name":"Teste"
+          }
+      ```
+  - - if made a PUT request with an user id appended to the endpoint (Ex: ``localhost:3000/user/3``) it will update this user with the content of the body of the request.
+  - - if made a DELETE request with an user id appended to the endpoint (Ex: ``localhost:3000/user/3``) it will remove this user from the database.
+ 
+- movies (``/movies``)
 
-## Description
+- - If made a GET request appending /id to this endpoint it returns all movies of that user. (Ex ``localhost:3000/user/3``)
+- - If made a POST request with a body containing userId and movieId it will add the movie associated with this id to the user associated with this id. Example of body:
+      ``` JSON
+          { 
+            "userId":"60624c8dd7b703143c0bed15",
+            "movieId":"tt1756545"
+          }
+      ```
+- - If made a DELETE request with a body containing userId and movieId it will remove the movie associated with this id from the library of the user associated with this id. Example of body:
+      ``` JSON
+          { 
+            "userId":"60624c8dd7b703143c0bed15",
+            "movieId":"tt1756545"
+          }
+      ```
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- review (``/review``)
+
+  This endpoint is not implemented yet.
+
+## This project is deployed on heroku
+
+## [Moovy](https://moovy-frontend.herokuapp.com/)
+
+<br> <br>
 
 ## Installation
 
@@ -50,29 +71,3 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
