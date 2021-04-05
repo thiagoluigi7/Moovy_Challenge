@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
-export const MovieConstrols = ({ type, movie }) => {
+export const MovieControls = ({ type, movie }) => {
     const {
         removeMovieFromWatchlist
     } = useContext(GlobalContext);

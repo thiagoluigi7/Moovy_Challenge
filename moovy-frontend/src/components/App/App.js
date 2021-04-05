@@ -12,11 +12,11 @@ import { GlobalProvider } from '../../context/GlobalState';
 import "../../lib/font-awesome/css/all.min.css";
 import './App.css';
 
-const USER_LOGIN_API = "https://moovy-backend.herokuapp.com/auth/login";
-const USER_API = "https://moovy-backend.herokuapp.com/user";
-const MOVIE_API ="https://moovy-backend.herokuapp.com/movies";
-const REVIEW_API ="https://moovy-backend.herokuapp.com/review";
-const IMDB_API = "http://www.omdbapi.com/?apikey=39c17bb5&";
+// const USER_LOGIN_API = "https://moovy-backend.herokuapp.com/auth/login";
+// const USER_API = "https://moovy-backend.herokuapp.com/user";
+// const MOVIE_API ="https://moovy-backend.herokuapp.com/movies";
+// const REVIEW_API ="https://moovy-backend.herokuapp.com/review";
+// const IMDB_API = "http://www.omdbapi.com/?apikey=39c17bb5&";
 
 function App() {
 
@@ -24,9 +24,11 @@ function App() {
 
   if(!token) {
     return (
-      <div className="login-wrapper">
-        <Login setToken={setToken} />
-        <CreateUser />
+      <div className='page-wrapper'>
+        <div className='login-wrapper'>
+          <Login setToken={setToken} />
+          <CreateUser />
+        </div>
       </div>
     );
 
@@ -34,7 +36,7 @@ function App() {
 
   return (
     <GlobalProvider>
-      <div className="page-wrapper">
+      <div className="dash-wrapper">
         <h1>Application</h1>
         <BrowserRouter>
           <Header />

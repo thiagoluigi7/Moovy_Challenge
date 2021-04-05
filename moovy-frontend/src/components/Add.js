@@ -1,28 +1,33 @@
 import React, { useState } from 'react';
 import { ResultCard } from './ResultCard';
 
-import IMDB_API from './App/App';
+// import IMDB_API from './App/App';
+const IMDB_API = "http://www.omdbapi.com/?apikey=39c17bb5&";
 
 export const Add = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
 
-    const onChange = (e: { preventDefault: () => void; target: { value: React.SetStateAction<string>; }; }) => {
+    const onChange = (e) => {
         e.preventDefault();
 
         setQuery(e.target.value);
 
-        fetch(
-            `${IMDB_API}s=${e.target.value}`
-        ) 
-        .then ((res) => res.json())
-        .then ((data) => {
-            if (!data.errors) {
-                setResults(data.results);
-            } else {
-                setResults([]);
-            }
-        });
+        if(query.length > 4) {
+
+            fetch(`${IMDB_API}s=${e.target.value}`, {
+                method: 'GET'
+            }) 
+            .then ((res) => res.json())
+            .then ((data) => {
+                // console.log(data.Search);
+                if (data.Response === 'True') {
+                    setResults(data.Search);
+                } else {
+                    setResults([]);
+                }
+            });
+        }
     };
 
     return (
@@ -41,7 +46,7 @@ export const Add = () => {
                     {results.length > 0 && (
                         <ul className='results'>
                             {results.map((movie) => (
-                                {/*//@ts-ignore*/}
+                                
                                 <li key={movie.imdbID}>
                                     <ResultCard movie={movie} />
                                 </li>

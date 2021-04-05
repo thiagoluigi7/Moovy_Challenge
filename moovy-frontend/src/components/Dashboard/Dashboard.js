@@ -11,7 +11,7 @@ function Logout() {
     window.location.href = '/';
 }
 
-async function fetchUser(id: string, token: string) {
+async function fetchUser(id, token) {
 
     return fetch(USER_API+'/'+id, {
         method: 'GET',
@@ -28,7 +28,7 @@ export default function Dashboard() {
     const userId = sessionStorage.getItem('user');
     const token = sessionStorage.getItem('token');
     if (userId != null && token != null) {
-        const handleUserFetch = async (e: { preventDefault: () => void; }) => {
+        const handleUserFetch = async (e) => {
             // e.preventDefault();
             var user = await fetchUser(userId, token);
 
@@ -41,9 +41,7 @@ export default function Dashboard() {
                     </div>
                     <div>
                         <h2>Dashboard</h2>
-                        {user.movies.map((movie: Movie) => (
-                            <Movie />
-                        ))}
+                        
                     </div>
                 </div>
         
